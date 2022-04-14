@@ -7,7 +7,7 @@
 // ************************************************************************
 
 import 'dart:io';
-
+import 'dart:math';
 // print statements colors for the terminal in dart cyan blue color
 void printTitle(String text) {
   print('\x1B[34m$text');
