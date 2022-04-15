@@ -8,6 +8,7 @@
 
 import 'dart:io';
 import 'dart:math';
+
 // print statements colors for the terminal in dart cyan blue color
 void printTitle(String text) {
   print('\x1B[34m$text');
@@ -68,6 +69,8 @@ void main() {
 
   // display the starter of the game
   String choice = "YES";
+  printBlue("The Asian countries");
+  printError(list.toString());
   Display();
   do {
     // displaying the rules here...
@@ -231,3 +234,4 @@ TitleMenuLoop() {
     stdout.write("*");
   }
 }
+
