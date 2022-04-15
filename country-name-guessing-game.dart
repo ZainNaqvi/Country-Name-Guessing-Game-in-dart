@@ -83,7 +83,7 @@ void main() {
     printError(
         "\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r                                                                           LIFE LINES $lifeLines❤");
     // displaying those countries
-    printError(CountriesList().toString());
+    //printError(CountriesList().toString());
     // guess this country string
     var correctGuess = GuessSortedCountry();
     // get the hint
