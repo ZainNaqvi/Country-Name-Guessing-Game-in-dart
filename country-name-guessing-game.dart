@@ -9,6 +9,8 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'game-guessing.dart';
+
 // print statements colors for the terminal in dart cyan blue color
 void printTitle(String text) {
   print('\x1B[34m$text');
@@ -58,20 +60,30 @@ var list = [
   "JAPAN",
   "TURKEY",
   "Afghanistan",
-  "Saudi Arabia",
-  "Nepal",
+  "SAUDI ARABIA",
+  "NEPAL",
   "North Korea",
   "IRAN",
   "IRAQ",
 ];
+// **********************************************
+// game option levels
+bool easy = true;
+bool hard = false;
+//******************************************** */
+// hint 4 selected number
+int number = 0;
 void main() {
   String name = InputCreaditials();
 
   // display the starter of the game
   String choice = "YES";
+
   printBlue("The Asian countries");
   printError(list.toString());
   Display();
+  // game options for the game levels
+  gameOptions();
   do {
     // displaying the rules here...
     printWarning("\nWould you like to play? ");
@@ -80,13 +92,19 @@ void main() {
     if (choice == "NO") {
       break;
     }
+
     // displaying the asian country list
     printReset("The Asian countries!.");
     // Life lines
     printError(
         "\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r                                                                           LIFE LINES $lifeLines❤");
     // displaying those countries
-    //printError(CountriesList().toString());
+    // ***************************************************
+    // for easy mode we have
+    easy == true ? printError(CountriesList().toString()) : "";
+    // for easy mode we have
+    hard == true ? "" : printError(CountriesList().toString());
+    // ****************************************************
     // guess this country string
     var correctGuess = GuessSortedCountry();
     // get the hint
@@ -111,6 +129,7 @@ void main() {
       break;
     }
   } while (choice != "NO");
+  // for the scoring here...
   if (score > 20) {
     printBlue("Good luck for the next time");
   } else if (score < 10) {
@@ -125,6 +144,25 @@ void main() {
       "_________________________________________________________________________");
   printWarning("THANK YOU SO MUCH FOR PLAYING THIS GAME");
   printError("DESIGNED & DEVELOPED BY SYED ZAIN HAIDER NAQVI❣");
+}
+
+// Creating the Game Options here...
+gameOptions() {
+  // creating the options here....
+  printReset("\n_______________: Game Modes :________________");
+  printBlue("1: Easy");
+  printBlue("2: Hard");
+  String gameOption = stdin.readLineSync()!;
+  switch (gameOption) {
+    case "1":
+      print("Your easy mode game is enabled");
+      break;
+    case "2":
+      hard = true;
+      print("Your Hard mode game is enabled");
+      break;
+    default:
+  }
 }
 
 // hints for the user are
@@ -234,4 +272,3 @@ TitleMenuLoop() {
     stdout.write("*");
   }
 }
-
